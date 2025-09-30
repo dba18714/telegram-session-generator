@@ -45,7 +45,7 @@ NEW_VERSION=$(npm version $VERSION_TYPE --no-git-tag-version)
 echo "✅ 新版本: $NEW_VERSION"
 
 # 确认发布
-read -p "确认发布版本 $NEW_VERSION 到 npm? (y/N): " -n 1 -r
+read -p "确认创建版本 $NEW_VERSION 的 GitHub Release? (y/N): " -n 1 -r
 echo
 if [[ ! $REPLY =~ ^[Yy]$ ]]; then
     echo "❌ 取消发布"
@@ -63,11 +63,8 @@ echo "⬆️ 推送到 GitHub..."
 git push origin main
 git push origin "$NEW_VERSION"
 
-# 发布到 npm
-echo "📦 发布到 npm..."
-npm publish
-
-echo "🎉 发布成功！"
+echo "🎉 版本标签已创建并推送！"
 echo "📋 新版本: $NEW_VERSION"
-echo "🔗 GitHub: https://github.com/dba18714/telegram-session-manager"
-echo "📦 npm: https://www.npmjs.com/package/telegram-session-manager"
+echo "🔗 GitHub Actions 将自动发布到 npm"
+echo "📦 请在 GitHub 上创建 Release 以触发自动发布"
+echo "🌐 GitHub Releases: https://github.com/dba18714/telegram-session-manager/releases"
