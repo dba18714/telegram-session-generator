@@ -188,25 +188,4 @@ export class TelegramSessionManager {
   private defaultErrorHandler = (error: Error): void => {
     console.error('Authentication error:', error.message);
   };
-
-  /**
-   * Static method to create session manager from environment variables
-   */
-  static fromEnv(envPrefix = 'TELEGRAM'): TelegramSessionManager {
-    const apiId = parseInt(process.env[`${envPrefix}_API_ID`] || '0', 10);
-    const apiHash = process.env[`${envPrefix}_API_HASH`];
-    const sessionString = process.env[`${envPrefix}_SESSION_STRING`];
-
-    if (!apiId || !apiHash) {
-      throw new Error(
-        `Missing environment variables. Please set ${envPrefix}_API_ID and ${envPrefix}_API_HASH`
-      );
-    }
-
-    return new TelegramSessionManager({
-      apiId,
-      apiHash,
-      sessionString,
-    });
-  }
 }

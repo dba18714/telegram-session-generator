@@ -6,12 +6,35 @@
  * A command-line tool to generate Telegram session strings
  */
 
-import * as dotenv from 'dotenv';
 import { TelegramSessionManager } from './TelegramSessionManager';
 import { CLIUtils } from './utils';
 
-// Load environment variables
-dotenv.config();
+/**
+ * Interactive API ID prompt
+ */
+async function promptApiId(): Promise<number> {
+  const apiIdStr = await CLIUtils.question('📱 请输入你的 API ID: ');
+  const apiId = parseInt(apiIdStr, 10);
+  if (!apiId || apiId <= 0) {
+    CLIUtils.log('❌ 无效的 API ID，请输入有效的数字', 'error');
+    return promptApiId();
+  }
+  CLIUtils.log(`API ID: ${apiId}`, 'success');
+  return apiId;
+}
+
+/**
+ * Interactive API Hash prompt
+ */
+async function promptApiHash(): Promise<string> {
+  const apiHash = await CLIUtils.question('🔑 请输入你的 API Hash: ');
+  if (!apiHash || apiHash.trim() === '') {
+    CLIUtils.log('❌ 无效的 API Hash，请输入有效的值', 'error');
+    return promptApiHash();
+  }
+  CLIUtils.log(`API Hash: ${apiHash.substring(0, 8)}...`, 'success');
+  return apiHash;
+}
 
 /**
  * Interactive phone number prompt
@@ -50,14 +73,14 @@ function handleError(error: Error): void {
 }
 
 /**
- * Display setup instructions
+ * Display API credentials instructions
  */
-function displaySetupInstructions(): void {
+function displayApiInstructions(): void {
   CLIUtils.log('获取 API 凭据:', 'info');
   console.log('1. 访问 https://my.telegram.org');
   console.log('2. 登录你的 Telegram 账号');
   console.log('3. 创建一个新的应用程序');
-  console.log('4. 将 api_id 和 api_hash 添加到环境变量中\n');
+  console.log('4. 获取 api_id 和 api_hash\n');
 }
 
 /**
@@ -96,10 +119,6 @@ Telegram Session Manager CLI
   --help, -h        显示帮助信息
   --version, -v     显示版本信息
   --verify <session>    验证现有会话字符串
-
-环境变量:
-  TELEGRAM_API_ID       Telegram API ID (必需)
-  TELEGRAM_API_HASH     Telegram API Hash (必需)
 
 示例:
   # 生成新的会话字符串
@@ -143,15 +162,13 @@ async function main(): Promise<void> {
     if (verifyIndex !== -1 && args[verifyIndex + 1]) {
       const sessionString = args[verifyIndex + 1];
 
-      // Get API credentials
-      const apiId = parseInt(process.env.TELEGRAM_API_ID || '0', 10);
-      const apiHash = process.env.TELEGRAM_API_HASH;
+      CLIUtils.log('验证会话字符串需要 API 凭据', 'info');
+      displayApiInstructions();
 
-      if (!apiId || !apiHash) {
-        CLIUtils.log('错误: 请先设置环境变量 TELEGRAM_API_ID 和 TELEGRAM_API_HASH', 'error');
-        displaySetupInstructions();
-        process.exit(1);
-      }
+      // Get API credentials interactively
+      const apiId = await promptApiId();
+      const apiHash = await promptApiHash();
+      console.log();
 
       CLIUtils.log('正在验证会话字符串...', 'info');
 
@@ -182,18 +199,12 @@ async function main(): Promise<void> {
     }
 
     // Regular session generation mode
-    const apiId = parseInt(process.env.TELEGRAM_API_ID || '0', 10);
-    const apiHash = process.env.TELEGRAM_API_HASH;
+    CLIUtils.log('请输入你的 Telegram API 凭据', 'info');
+    displayApiInstructions();
 
-    if (!apiId || !apiHash) {
-      CLIUtils.log('错误: 请先设置环境变量 TELEGRAM_API_ID 和 TELEGRAM_API_HASH', 'error');
-      displaySetupInstructions();
-      process.exit(1);
-    }
-
-    CLIUtils.log('API 凭据已配置', 'success');
-    console.log(`📱 API ID: ${apiId}`);
-    console.log(`🔑 API Hash: ${apiHash.substring(0, 8)}...\n`);
+    const apiId = await promptApiId();
+    const apiHash = await promptApiHash();
+    console.log();
 
     CLIUtils.log('正在连接到 Telegram...', 'info');
     console.log();
