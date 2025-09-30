@@ -65,6 +65,5 @@ git push origin "$NEW_VERSION"
 
 echo "🎉 版本标签已创建并推送！"
 echo "📋 新版本: $NEW_VERSION"
-echo "🔗 GitHub Actions 将自动发布到 npm"
-echo "📦 请在 GitHub 上创建 Release 以触发自动发布"
+echo "🔗 GitHub Actions 将自动创建 Release 并发布到 npm"
 echo "🌐 GitHub Releases: https://github.com/dba18714/telegram-session-manager/releases"

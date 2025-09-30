@@ -5,8 +5,17 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
-  release:
-    types: [published]
+  workflow_dispatch:
+    inputs:
+      version_type:
+        description: '版本类型'
+        required: true
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
 
 jobs:
   test:
@@ -33,13 +42,16 @@ jobs:
       - name: Build project
         run: npm run build
 
-  publish:
+  auto-release:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event_name == 'release'
-
+    if: github.event_name == 'workflow_dispatch'
+    
     steps:
       - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Use Node.js 22.x
         uses: actions/setup-node@v4
@@ -53,6 +65,46 @@ jobs:
 
       - name: Build project
         run: npm run build
+
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+      - name: Bump version and create tag
+        id: version
+        run: |
+          NEW_VERSION=$(npm version ${{ github.event.inputs.version_type }} --no-git-tag-version)
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          git add package.json package-lock.json
+          git commit -m "chore: bump version to $NEW_VERSION"
+          git tag "$NEW_VERSION"
+          git push origin main
+          git push origin "$NEW_VERSION"
+
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ steps.version.outputs.new_version }}
+          release_name: Release ${{ steps.version.outputs.new_version }}
+          body: |
+            ## 🚀 新版本发布：${{ steps.version.outputs.new_version }}
+            
+            ### 📋 更新类型
+            ${{ github.event.inputs.version_type }} 版本更新
+            
+            ### 📦 安装方式
+            ```bash
+            npm install -g telegram-session-manager@${{ steps.version.outputs.new_version }}
+            ```
+            
+            ### 🔗 相关链接
+            - [NPM 包](https://www.npmjs.com/package/telegram-session-manager)
+            - [更新历史](${{ github.server_url }}/${{ github.repository }}/commits/main)
+          draft: false
+          prerelease: false
 
       - name: Publish to NPM
         run: npm publish
