@@ -69,5 +69,5 @@ npm publish
 
 echo "🎉 发布成功！"
 echo "📋 新版本: $NEW_VERSION"
-echo "🔗 GitHub: https://github.com/yourusername/telegram-session-manager"
+echo "🔗 GitHub: https://github.com/dba18714/telegram-session-manager"
 echo "📦 npm: https://www.npmjs.com/package/telegram-session-manager"

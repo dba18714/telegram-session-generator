@@ -11,8 +11,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc && npm run build:esm",
-    "build:esm": "tsc --module es2020 --outDir dist/esm && node scripts/build-esm.js",
+    "build": "tsc",
     "dev": "ts-node src/cli.ts",
     "test": "jest",
     "test:watch": "jest --watch",
