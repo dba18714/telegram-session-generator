@@ -40,12 +40,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/telegram-session-manager.git"
+    "url": "git+https://github.com/dba18714/telegram-session-manager.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/telegram-session-manager/issues"
+    "url": "https://github.com/dba18714/telegram-session-manager/issues"
   },
-  "homepage": "https://github.com/yourusername/telegram-session-manager#readme",
+  "homepage": "https://github.com/dba18714/telegram-session-manager#readme",
   "dependencies": {
     "dotenv": "^17.2.2",
     "telegram": "^2.26.22"
