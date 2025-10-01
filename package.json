@@ -21,7 +21,11 @@
     "clean": "rimraf dist",
     "prepublishOnly": "npm run clean && npm run build",
     "semantic-release": "semantic-release",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "docker:build": "docker build -t telegram-session-generator .",
+    "docker:run": "docker run --rm -it telegram-session-generator",
+    "docker:build-multi": "docker buildx build --platform linux/amd64,linux/arm64 -t telegram-session-generator .",
+    "docker:test": "docker run --rm telegram-session-generator --help"
   },
   "keywords": [
     "telegram",
