@@ -1,5 +1,18 @@
 # 配置自动发布的步骤
 
+## 工作流程架构
+
+现在使用了两个独立的 GitHub Actions workflows：
+
+1. **Release Workflow** (`.github/workflows/release.yml`)
+   - 处理代码测试、npm 发布和 GitHub releases
+   - 当代码推送到 `main` 分支时自动触发
+
+2. **Docker Publish Workflow** (`.github/workflows/docker-publish.yml`)
+   - 专门处理 Docker 镜像的构建和发布
+   - 当 Release workflow 成功完成后自动触发
+   - 也可以手动触发或通过 GitHub releases 触发
+
 ## 1. 设置 GitHub Secrets
 
 在你的 GitHub 仓库中，需要添加以下 Secrets：
@@ -39,17 +52,25 @@
 
 ## 3. 自动发布流程
 
-设置完成后，当你：
-
-1. 提交代码到 `main` 分支
-2. 使用 conventional commits 格式 (feat:, fix:, etc.)
-3. GitHub Actions 会自动:
+### 标准发布流程：
+1. 提交代码到 `main` 分支 (使用 conventional commits 格式)
+2. **Release Workflow** 自动运行:
    - 运行测试
    - 创建新的版本号
    - 发布到 npm
-   - 构建并推送 Docker 镜像到 Docker Hub 和 GitHub Container Registry
    - 更新 CHANGELOG.md
    - 创建 GitHub Release
+3. **Docker Publish Workflow** 自动运行:
+   - 构建 Docker 镜像
+   - 推送到 Docker Hub 和 GitHub Container Registry
+   - 更新 Docker Hub 描述
+
+### 手动 Docker 发布：
+你也可以手动触发 Docker 发布：
+1. 进入 GitHub 仓库的 "Actions" 选项卡
+2. 选择 "Docker Publish" workflow
+3. 点击 "Run workflow"
+4. 选择版本号和是否推送到注册表
 
 ## 4. 验证发布
 
@@ -73,3 +94,12 @@ npm run docker:test
 # 运行镜像
 npm run docker:run
 ```
+
+## 6. Workflow 的优势
+
+### 分离的好处：
+- **更清晰的职责**: Release workflow 专注于代码发布，Docker workflow 专注于容器化
+- **独立调试**: 可以单独测试和调试 Docker 发布过程
+- **灵活控制**: 可以选择只发布代码而不发布 Docker 镜像，或反之
+- **更好的错误隔离**: 如果 Docker 构建失败，不会影响 npm 发布
+- **手动控制**: 可以手动触发 Docker 发布，便于测试和紧急发布
