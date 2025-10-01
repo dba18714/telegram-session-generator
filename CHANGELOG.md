@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/dba18714/telegram-session-generator/compare/v1.0.0...v1.1.0) (2025-10-01)
+
+### Features
+
+* 重命名项目为 telegram-session-generator ([1055eee](https://github.com/dba18714/telegram-session-generator/commit/1055eee16010148ea702ef2d030401fbc0a0cd6c))
+
 ## 1.0.0 (2025-10-01)
 
 ### Features
