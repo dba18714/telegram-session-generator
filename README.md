@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/telegram-session-generator.svg)](https://badge.fury.io/js/telegram-session-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-一个简单、安全的 Telegram 会话字符串生成工具，专为 Telegram Bot 开发而设计。
+一个简单、安全的 Telegram 会话字符串生成工具，用于 Telegram 客户端开发和自动化项目。
 
 ## 使用方法
 
