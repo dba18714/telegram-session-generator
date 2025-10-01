@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 
 /**
- * Telegram Session Manager CLI
+ * Telegram Session Generator CLI
  *
  * A command-line tool to generate Telegram session strings
  */
 
-import { TelegramSessionManager } from './TelegramSessionGenerator';
+import { TelegramSessionGenerator } from './TelegramSessionGenerator';
 import { CLIUtils } from './utils';
 
 /**
@@ -110,7 +110,7 @@ function displayUsageInstructions(sessionString: string): void {
  */
 function displayHelp(): void {
   console.log(`
-Telegram Session Manager CLI
+Telegram Session Generator CLI
 
 用法:
   telegram-session [选项]
@@ -172,14 +172,14 @@ async function main(): Promise<void> {
 
       CLIUtils.log('正在验证会话字符串...', 'info');
 
-      const manager = new TelegramSessionManager({ apiId, apiHash });
-      const result = await manager.verifySession(sessionString);
+      const generator = new TelegramSessionGenerator({ apiId, apiHash });
+      const result = await generator.verifySession(sessionString);
 
       if (result.success) {
         CLIUtils.log('会话字符串验证成功！', 'success');
 
         // Try to get user info
-        const userInfo = await manager.getUserInfo(sessionString);
+        const userInfo = await generator.getUserInfo(sessionString);
         if (userInfo) {
           console.log(
             `用户: ${userInfo.firstName}${userInfo.lastName ? ' ' + userInfo.lastName : ''}`
@@ -209,9 +209,9 @@ async function main(): Promise<void> {
     CLIUtils.log('正在连接到 Telegram...', 'info');
     console.log();
 
-    const manager = new TelegramSessionManager({ apiId, apiHash });
+    const generator = new TelegramSessionGenerator({ apiId, apiHash });
 
-    const result = await manager.createSession({
+    const result = await generator.createSession({
       phoneNumber: promptPhoneNumber,
       phoneCode: promptVerificationCode,
       password: promptPassword,
@@ -228,7 +228,7 @@ async function main(): Promise<void> {
       process.exit(1);
     }
 
-    await manager.disconnect();
+    await generator.disconnect();
   } catch (error) {
     CLIUtils.log(`脚本执行失败: ${error instanceof Error ? error.message : error}`, 'error');
     process.exit(1);

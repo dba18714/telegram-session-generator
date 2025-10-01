@@ -1,5 +1,5 @@
 /**
- * Telegram Session Manager Types
+ * Telegram Session Generator Types
  */
 
 export interface TelegramSessionConfig {

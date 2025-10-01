@@ -3,9 +3,9 @@ import { StringSession } from 'telegram/sessions';
 import { TelegramSessionConfig, AuthenticationOptions, SessionResult, UserInfo } from './types';
 
 /**
- * TelegramSessionManager - A class to manage Telegram session creation and authentication
+ * TelegramSessionGenerator - A class to manage Telegram session creation and authentication
  */
-export class TelegramSessionManager {
+export class TelegramSessionGenerator {
   private client: TelegramClient | null = null;
   private config: TelegramSessionConfig;
 

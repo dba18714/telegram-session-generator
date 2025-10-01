@@ -2,23 +2,23 @@
  * @jest-environment node
  */
 
-import { TelegramSessionManager } from '../TelegramSessionGenerator';
+import { TelegramSessionGenerator } from '../TelegramSessionGenerator';
 
-describe('TelegramSessionManager', () => {
+describe('TelegramSessionGenerator', () => {
   describe('constructor', () => {
     it('should create instance with valid config', () => {
-      const manager = new TelegramSessionManager({
+      const generator = new TelegramSessionGenerator({
         apiId: 12345678,
         apiHash: 'test_hash',
       });
 
-      expect(manager).toBeInstanceOf(TelegramSessionManager);
-      expect(manager.isConnected()).toBe(false);
+      expect(generator).toBeInstanceOf(TelegramSessionGenerator);
+      expect(generator.isConnected()).toBe(false);
     });
 
     it('should throw error with invalid API ID', () => {
       expect(() => {
-        new TelegramSessionManager({
+        new TelegramSessionGenerator({
           apiId: 0,
           apiHash: 'test_hash',
         });
@@ -27,7 +27,7 @@ describe('TelegramSessionManager', () => {
 
     it('should throw error with invalid API Hash', () => {
       expect(() => {
-        new TelegramSessionManager({
+        new TelegramSessionGenerator({
           apiId: 12345678,
           apiHash: '',
         });
@@ -35,45 +35,45 @@ describe('TelegramSessionManager', () => {
     });
 
     it('should set default connection retries', () => {
-      const manager = new TelegramSessionManager({
+      const generator = new TelegramSessionGenerator({
         apiId: 12345678,
         apiHash: 'test_hash',
       });
 
       // Check that default connectionRetries is set (can't directly access private property)
-      expect(manager).toBeInstanceOf(TelegramSessionManager);
+      expect(generator).toBeInstanceOf(TelegramSessionGenerator);
     });
 
     it('should use custom connection retries', () => {
-      const manager = new TelegramSessionManager({
+      const generator = new TelegramSessionGenerator({
         apiId: 12345678,
         apiHash: 'test_hash',
         connectionRetries: 5,
       });
 
-      expect(manager).toBeInstanceOf(TelegramSessionManager);
+      expect(generator).toBeInstanceOf(TelegramSessionGenerator);
     });
   });
 
   describe('disconnect', () => {
     it('should disconnect without error when not connected', async () => {
-      const manager = new TelegramSessionManager({
+      const generator = new TelegramSessionGenerator({
         apiId: 12345678,
         apiHash: 'test_hash',
       });
 
-      await expect(manager.disconnect()).resolves.not.toThrow();
+      await expect(generator.disconnect()).resolves.not.toThrow();
     });
   });
 
   describe('isConnected', () => {
     it('should return false when not connected', () => {
-      const manager = new TelegramSessionManager({
+      const generator = new TelegramSessionGenerator({
         apiId: 12345678,
         apiHash: 'test_hash',
       });
 
-      expect(manager.isConnected()).toBe(false);
+      expect(generator.isConnected()).toBe(false);
     });
   });
 });
