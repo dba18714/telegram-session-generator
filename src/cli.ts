@@ -151,7 +151,7 @@ async function main(): Promise<void> {
     // Handle version
     if (args.includes('--version') || args.includes('-v')) {
       const packageJson = require('../package.json');
-      console.log(`telegram-session-manager v${packageJson.version}`);
+      console.log(`telegram-session-generator v${packageJson.version}`);
       return;
     }
 

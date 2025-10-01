@@ -4,8 +4,8 @@
 
 GitHub Actions 的 semantic-release 失败，错误信息：
 ```
-remote: Permission to dba18714/telegram-session-manager.git denied to github-actions[bot].
-fatal: unable to access 'https://github.com/dba18714/telegram-session-manager.git/': The requested URL returned error: 403.
+remote: Permission to dba18714/telegram-session-generator.git denied to github-actions[bot].
+fatal: unable to access 'https://github.com/dba18714/telegram-session-generator.git/': The requested URL returned error: 403.
 ```
 
 ## ✅ 已修复的配置

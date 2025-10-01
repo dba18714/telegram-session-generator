@@ -69,9 +69,9 @@ BREAKING CHANGE: 移除了旧的会话生成方法
 
 ### 📊 监控发布状态
 
-- **GitHub Actions**: https://github.com/dba18714/telegram-session-manager/actions
-- **npm 包页面**: https://www.npmjs.com/package/telegram-session-manager
-- **GitHub Releases**: https://github.com/dba18714/telegram-session-manager/releases
+- **GitHub Actions**: https://github.com/dba18714/telegram-session-generator/actions
+- **npm 包页面**: https://www.npmjs.com/package/telegram-session-generator
+- **GitHub Releases**: https://github.com/dba18714/telegram-session-generator/releases
 
 ### 🚫 不再需要
 

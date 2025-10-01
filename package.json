@@ -1,5 +1,5 @@
 {
-  "name": "telegram-session-manager",
+  "name": "telegram-session-generator",
   "version": "1.0.0",
   "type": "module",
   "description": "一个简单、安全的 Telegram 会话字符串生成 CLI 工具",
@@ -35,12 +35,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dba18714/telegram-session-manager.git"
+    "url": "git+https://github.com/dba18714/telegram-session-generator.git"
   },
   "bugs": {
-    "url": "https://github.com/dba18714/telegram-session-manager/issues"
+    "url": "https://github.com/dba18714/telegram-session-generator/issues"
   },
-  "homepage": "https://github.com/dba18714/telegram-session-manager#readme",
+  "homepage": "https://github.com/dba18714/telegram-session-generator#readme",
   "dependencies": {
     "telegram": "^2.26.22"
   },

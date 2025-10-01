@@ -1,6 +1,6 @@
-# Telegram Session Manager
+# Telegram Session Generator
 
-[![npm version](https://badge.fury.io/js/telegram-session-manager.svg)](https://badge.fury.io/js/telegram-session-manager)
+[![npm version](https://badge.fury.io/js/telegram-session-generator.svg)](https://badge.fury.io/js/telegram-session-generator)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 一个简单、安全的 Telegram 会话字符串生成工具，专为 Telegram Bot 开发而设计。
@@ -9,10 +9,10 @@
 
 ```bash
 # 使用 npx 直接运行（推荐）
-npx telegram-session-manager
+npx telegram-session-generator
 
 # 或者全局安装
-npm install -g telegram-session-manager
+npm install -g telegram-session-generator
 telegram-session
 ```
 

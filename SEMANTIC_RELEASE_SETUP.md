@@ -73,6 +73,6 @@ git push origin main
 
 ## 📊 监控
 
-- GitHub Actions: https://github.com/dba18714/telegram-session-manager/actions
-- npm 包: https://www.npmjs.com/package/telegram-session-manager
-- Releases: https://github.com/dba18714/telegram-session-manager/releases
+- GitHub Actions: https://github.com/dba18714/telegram-session-generator/actions
+- npm 包: https://www.npmjs.com/package/telegram-session-generator
+- Releases: https://github.com/dba18714/telegram-session-generator/releases
