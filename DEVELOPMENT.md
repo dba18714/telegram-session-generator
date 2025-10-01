@@ -11,12 +11,23 @@ npm run commit
 ```
 
 或者手动遵循格式：
-- `feat:` 新功能
-- `fix:` 修复 bug
+
+**会触发版本升级的：**
+- `feat:` 新功能 → **MINOR** 版本升级 (x.Y.0)
+- `fix:` 修复 bug → **PATCH** 版本升级 (x.x.Z)
+- `perf:` 性能优化 → **PATCH** 版本升级 (x.x.Z)
+- `refactor:` 重构（既不是新功能也不是 bug 修复）→ **PATCH** 版本升级 (x.x.Z)
+
+**不会触发版本升级的：**
 - `docs:` 文档更新
 - `style:` 代码格式化（不影响功能）
-- `refactor:` 重构（既不是新功能也不是 bug 修复）
+- `test:` 添加或修改测试
 - `chore:` 构建过程或辅助工具的变动
+- `ci:` CI/CD 配置变更
+
+**破坏性变更（MAJOR 版本升级 X.0.0）：**
+- 在任何提交类型后添加 `!`，如：`feat!:`、`fix!:`
+- 或在提交信息中包含 `BREAKING CHANGE:`
 
 ### 自动发布
 
