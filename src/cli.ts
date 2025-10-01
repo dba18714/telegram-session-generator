@@ -6,7 +6,7 @@
  * A command-line tool to generate Telegram session strings
  */
 
-import { TelegramSessionManager } from './TelegramSessionManager';
+import { TelegramSessionManager } from './TelegramSessionGenerator';
 import { CLIUtils } from './utils';
 
 /**

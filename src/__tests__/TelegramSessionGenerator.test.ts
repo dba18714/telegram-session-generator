@@ -2,7 +2,7 @@
  * @jest-environment node
  */
 
-import { TelegramSessionManager } from '../TelegramSessionManager';
+import { TelegramSessionManager } from '../TelegramSessionGenerator';
 
 describe('TelegramSessionManager', () => {
   describe('constructor', () => {
