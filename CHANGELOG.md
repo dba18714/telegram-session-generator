@@ -1,3 +1,9 @@
+## [1.0.1](https://github.com/dba18714/telegram-session-manager/compare/v1.0.0...v1.0.1) (2025-10-01)
+
+### Bug Fixes
+
+* 更新版本号以避免 npm 发布冲突 ([c7e077b](https://github.com/dba18714/telegram-session-manager/commit/c7e077bb0abb8bbc37c34164deaccba554b633cd))
+
 ## 1.0.0 (2025-10-01)
 
 ### Features
