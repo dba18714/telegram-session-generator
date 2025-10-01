@@ -1,3 +1,9 @@
+## [1.1.1](https://github.com/dba18714/telegram-session-generator/compare/v1.1.0...v1.1.1) (2025-10-01)
+
+### Bug Fixes
+
+* "ReferenceError: exports is not defined in ES module scope" ([1a6c4b7](https://github.com/dba18714/telegram-session-generator/commit/1a6c4b7cdd2ea39266e1720966d8a7d5c6c30c87))
+
 ## [1.1.0](https://github.com/dba18714/telegram-session-generator/compare/v1.0.0...v1.1.0) (2025-10-01)
 
 ### Features
