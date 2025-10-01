@@ -136,6 +136,3 @@ Thumbs.db
 # Telegram session files
 telegram-session.json
 *.session
-
-# Semantic release generated files
-CHANGELOG.md
