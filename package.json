@@ -2,7 +2,7 @@
   "name": "telegram-session-generator",
   "version": "1.1.0",
   "type": "module",
-  "description": "一个简单、安全的 Telegram 会话字符串生成 CLI 工具",
+  "description": "🚀 A secure and easy-to-use CLI tool for generating Telegram session strings. Perfect for Telegram bot development and automation projects.",
   "bin": {
     "telegram-session": "dist/cli.js"
   },
@@ -29,7 +29,14 @@
     "session",
     "cli",
     "tool",
-    "authentication"
+    "authentication",
+    "bot",
+    "generator",
+    "automation",
+    "nodejs",
+    "typescript",
+    "telegram-bot",
+    "session-string"
   ],
   "author": "Your Name <your.email@example.com>",
   "license": "MIT",
