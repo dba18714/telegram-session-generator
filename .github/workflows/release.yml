@@ -1,5 +1,7 @@
 name: Release
 
+run-name: ${{ github.event.workflow_run.head_commit.message }}
+
 on:
   workflow_run:
     workflows: ["Test"]
@@ -13,9 +15,14 @@ permissions:
   pull-requests: write
   id-token: write
 
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   release:
     runs-on: ubuntu-latest
+    if: github.event.workflow_run.conclusion == 'success'
     
     steps:
       - uses: actions/checkout@v4
