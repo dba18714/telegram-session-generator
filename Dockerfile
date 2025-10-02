@@ -20,9 +20,6 @@ RUN npm run build
 # 生产镜像
 FROM node:22-alpine AS runtime
 
-# gramjs安装时需要这些构建工具
-RUN apk add --no-cache python3 make g++
-
 # 安装 dumb-init 用于处理信号
 RUN apk add --no-cache dumb-init
 
