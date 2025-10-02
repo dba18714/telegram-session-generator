@@ -1,9 +1,6 @@
 # 使用多阶段构建优化镜像大小
 FROM node:22-alpine AS builder
 
-# gramjs安装时需要这些构建工具
-RUN apk add --no-cache python3 make g++
-
 # 设置工作目录
 WORKDIR /app
 
