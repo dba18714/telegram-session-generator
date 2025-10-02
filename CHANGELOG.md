@@ -1,3 +1,9 @@
+## [1.5.2](https://github.com/dba18714/telegram-session-generator/compare/v1.5.1...v1.5.2) (2025-10-02)
+
+### Bug Fixes
+
+* 添加发布事件输出步骤 ([7464e0e](https://github.com/dba18714/telegram-session-generator/commit/7464e0ed514f6bd3822c414169efb83c653f32d7))
+
 ## [1.5.1](https://github.com/dba18714/telegram-session-generator/compare/v1.5.0...v1.5.1) (2025-10-02)
 
 ### Bug Fixes
