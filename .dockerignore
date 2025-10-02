@@ -66,6 +66,5 @@ docker-compose*.yml
 .dockerignore
 
 # 其他
-LICENSE
 CHANGELOG.md
 DEVELOPMENT.md
