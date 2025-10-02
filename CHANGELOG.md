@@ -1,3 +1,9 @@
+## [1.5.6](https://github.com/dba18714/telegram-session-generator/compare/v1.5.5...v1.5.6) (2025-10-02)
+
+### Bug Fixes
+
+* 移除 Dockerfile 中不必要的 gramjs 构建工具安装步骤 ([504cbab](https://github.com/dba18714/telegram-session-generator/commit/504cbab4f63b7b7b338bf1898098ead5d918fa86))
+
 ## [1.5.5](https://github.com/dba18714/telegram-session-generator/compare/v1.5.4...v1.5.5) (2025-10-02)
 
 ### Bug Fixes
