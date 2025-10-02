@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/dba18714/telegram-session-generator/compare/v1.4.0...v1.5.0) (2025-10-02)
+
+### Features
+
+* 添加 Foo 工作流 ([0d0cd25](https://github.com/dba18714/telegram-session-generator/commit/0d0cd25ca434aee6905acd385f5a9c7ea55f0caa))
+
 ## [1.4.0](https://github.com/dba18714/telegram-session-generator/compare/v1.3.0...v1.4.0) (2025-10-02)
 
 ### Features
