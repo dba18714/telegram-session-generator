@@ -1,3 +1,9 @@
+## [1.5.4](https://github.com/dba18714/telegram-session-generator/compare/v1.5.3...v1.5.4) (2025-10-02)
+
+### Bug Fixes
+
+* 添加 gramjs 安装所需的构建工具 ([d86d674](https://github.com/dba18714/telegram-session-generator/commit/d86d6747e2d58f7f38fa8bb01e144f280bb50071))
+
 ## [1.5.3](https://github.com/dba18714/telegram-session-generator/compare/v1.5.2...v1.5.3) (2025-10-02)
 
 ### Bug Fixes
