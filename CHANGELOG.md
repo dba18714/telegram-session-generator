@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/dba18714/telegram-session-generator/compare/v1.3.0...v1.4.0) (2025-10-02)
+
+### Features
+
+* 添加手动触发工作流的支持 ([1b6b7b5](https://github.com/dba18714/telegram-session-generator/commit/1b6b7b5a7064426ec6311932b43b5df4aa395b55))
+
 ## [1.3.0](https://github.com/dba18714/telegram-session-generator/compare/v1.2.0...v1.3.0) (2025-10-02)
 
 ### Features
