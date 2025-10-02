@@ -1,3 +1,9 @@
+## [1.5.1](https://github.com/dba18714/telegram-session-generator/compare/v1.5.0...v1.5.1) (2025-10-02)
+
+### Bug Fixes
+
+* 更新 GITHUB_TOKEN 的引用为 GH_TOKEN ([ee347a0](https://github.com/dba18714/telegram-session-generator/commit/ee347a05b98c81b0292b9f7734a38608152b37ea))
+
 ## [1.5.0](https://github.com/dba18714/telegram-session-generator/compare/v1.4.0...v1.5.0) (2025-10-02)
 
 ### Features
