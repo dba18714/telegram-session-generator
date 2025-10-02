@@ -1,6 +1,6 @@
 {
   "name": "telegram-session-generator",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "🚀 A secure and easy-to-use CLI tool for generating Telegram session strings. Perfect for Telegram client development and automation projects.",
   "bin": {
     "telegram-session": "dist/cli.js"

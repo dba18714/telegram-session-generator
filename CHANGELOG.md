@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/dba18714/telegram-session-generator/compare/v1.5.2...v1.5.3) (2025-10-02)
+
+### Bug Fixes
+
+* 更新 Dockerfile，明确安装生产依赖时忽略可选依赖的错误 ([36db096](https://github.com/dba18714/telegram-session-generator/commit/36db09627edcb5e9533ab39aeeec29cc40f5c580))
+* 精简事件输出，移除错误的 JSON 转换 ([f28a842](https://github.com/dba18714/telegram-session-generator/commit/f28a84273a8452dfa8e50bb8093b3943a6a180a7))
+
 ## [1.5.2](https://github.com/dba18714/telegram-session-generator/compare/v1.5.1...v1.5.2) (2025-10-02)
 
 ### Bug Fixes
