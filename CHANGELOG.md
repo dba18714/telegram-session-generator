@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/dba18714/telegram-session-generator/compare/v1.2.0...v1.3.0) (2025-10-02)
+
+### Features
+
+* 更新工作流配置 ([d478996](https://github.com/dba18714/telegram-session-generator/commit/d4789960f2f8b82d89a32c36ad3f6de618a2c95e))
+
 ## [1.2.0](https://github.com/dba18714/telegram-session-generator/compare/v1.1.1...v1.2.0) (2025-10-02)
 
 ### Features
