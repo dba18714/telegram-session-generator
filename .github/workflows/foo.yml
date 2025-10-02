@@ -14,3 +14,5 @@ jobs:
         run: echo "Event:${{ toJson(github.event) }}"
       - name: Show release event
         run: echo "Release event:${{ toJson(github.event.release) }}"
+      - name: Show release event
+        run: echo "Release event:${{ github.event.release }}"
