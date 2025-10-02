@@ -1,3 +1,16 @@
+## [1.2.0](https://github.com/dba18714/telegram-session-generator/compare/v1.1.1...v1.2.0) (2025-10-02)
+
+### Features
+
+* 添加 Docker 支持 ([3351997](https://github.com/dba18714/telegram-session-generator/commit/3351997144c54927990ebfe4ec01377ebd60453f))
+* 独立 Docker 发布工作流 ([a333e6d](https://github.com/dba18714/telegram-session-generator/commit/a333e6d2d35714cb5693a3cc7ec2bf1bacaa095b))
+* 独立出“测试工作流” ([c712bde](https://github.com/dba18714/telegram-session-generator/commit/c712bdeb2b518601b6a7f1c93251c73202d822be))
+* 精简 Docker 发布工作流，移除不必要的触发条件和步骤 ([e4064bb](https://github.com/dba18714/telegram-session-generator/commit/e4064bbd6fa0732f8544d984c4cf01471ab51f3a))
+
+### Bug Fixes
+
+* 修正 Docker 登录步骤中的密码变量，使用 TOKEN ([ef5f85b](https://github.com/dba18714/telegram-session-generator/commit/ef5f85bca92a6c401503bed29e99af6385bb8ff6))
+
 ## [1.1.1](https://github.com/dba18714/telegram-session-generator/compare/v1.1.0...v1.1.1) (2025-10-01)
 
 ### Bug Fixes
