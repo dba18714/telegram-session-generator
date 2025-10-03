@@ -1,3 +1,13 @@
+## [1.6.0](https://github.com/dba18714/telegram-session-generator/compare/v1.5.7...v1.6.0) (2025-10-03)
+
+### Features
+
+* 支持多平台构建 Docker 镜像 ([0367bf0](https://github.com/dba18714/telegram-session-generator/commit/0367bf0523fe915bbb3ce8d2e0258643c5d4a7ee))
+
+### Bug Fixes
+
+* 移除 npm ci 命令中的 --no-optional 选项 ([d3a382c](https://github.com/dba18714/telegram-session-generator/commit/d3a382cd41e2b2288ced325c9d445dd10aa5e22f))
+
 ## [1.5.7](https://github.com/dba18714/telegram-session-generator/compare/v1.5.6...v1.5.7) (2025-10-02)
 
 ### Bug Fixes
