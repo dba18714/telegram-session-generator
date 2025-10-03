@@ -27,6 +27,10 @@ telegram-session
 
 运行工具时会提示你输入这些凭据。
 
+## 开发维护
+
+详情请参考 [DEVELOPMENT.md](https://github.com/dba18714/telegram-session-generator/blob/main/DEVELOPMENT.md)。
+
 ## 许可证
 
 MIT License - 详见 [LICENSE](LICENSE) 文件。
