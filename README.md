@@ -13,7 +13,11 @@ npx telegram-session-generator
 
 # 或者全局安装
 npm install -g telegram-session-generator
-telegram-session
+
+# 运行
+telegram-session-generator
+# 或
+tsg
 ```
 
 ## 使用方法 (Docker)

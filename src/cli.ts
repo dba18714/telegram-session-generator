@@ -113,7 +113,7 @@ function displayHelp(): void {
 Telegram Session Generator CLI
 
 用法:
-  telegram-session [选项]
+  telegram-session-generator [选项]
 
 选项:
   --help, -h        显示帮助信息
@@ -122,10 +122,10 @@ Telegram Session Generator CLI
 
 示例:
   # 生成新的会话字符串
-  telegram-session
+  telegram-session-generator
 
   # 验证现有会话字符串
-  telegram-session --verify "your_session_string_here"
+  telegram-session-generator --verify "your_session_string_here"
 
 获取 API 凭据:
   1. 访问 https://my.telegram.org
