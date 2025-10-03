@@ -1,3 +1,9 @@
+## [1.6.1](https://github.com/dba18714/telegram-session-generator/compare/v1.6.0...v1.6.1) (2025-10-03)
+
+### Bug Fixes
+
+* 命令更改为 telegram-session-generator ([76fcb07](https://github.com/dba18714/telegram-session-generator/commit/76fcb07d6008aec40c67cc53ca64e204711f1a3e))
+
 ## [1.6.0](https://github.com/dba18714/telegram-session-generator/compare/v1.5.7...v1.6.0) (2025-10-03)
 
 ### Features
