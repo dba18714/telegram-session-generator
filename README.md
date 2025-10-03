@@ -16,6 +16,30 @@ npm install -g telegram-session-generator
 telegram-session
 ```
 
+## 使用方法 (Docker)
+
+如果你更喜欢使用 Docker，可以直接运行预构建的镜像：
+
+```bash
+docker run --rm -it dba18714/telegram-session-generator
+```
+
+如果你想自己构建镜像：
+
+```bash
+# 克隆仓库
+git clone https://github.com/dba18714/telegram-session-generator.git
+cd telegram-session-generator
+
+# 构建镜像
+npm run docker:build
+
+# 运行容器
+npm run docker:run
+```
+
+更多 Docker 使用详情请参考 [DOCKER.md](DOCKER.md)。
+
 ## 获取 API 凭据
 
 运行工具前，请先获取 Telegram API 凭据：
