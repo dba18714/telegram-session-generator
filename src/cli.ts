@@ -73,9 +73,9 @@ async function promptMenuChoice(): Promise<'generate' | 'verify'> {
   console.log('1. 生成新的会话字符串');
   console.log('2. 验证现有会话字符串');
   console.log();
-  
+
   const choice = await CLIUtils.question('请输入选项 (1 或 2): ');
-  
+
   if (choice === '1') {
     return 'generate';
   } else if (choice === '2') {
@@ -165,9 +165,7 @@ async function handleSessionVerification(): Promise<void> {
     // Try to get user info
     const userInfo = await generator.getUserInfo(sessionString);
     if (userInfo) {
-      console.log(
-        `用户: ${userInfo.firstName}${userInfo.lastName ? ' ' + userInfo.lastName : ''}`
-      );
+      console.log(`用户: ${userInfo.firstName}${userInfo.lastName ? ' ' + userInfo.lastName : ''}`);
       if (userInfo.username) {
         console.log(`用户名: @${userInfo.username}`);
       }
@@ -272,7 +270,6 @@ async function main(): Promise<void> {
     } else {
       await handleSessionGeneration();
     }
-
   } catch (error) {
     CLIUtils.log(`脚本执行失败: ${error instanceof Error ? error.message : error}`, 'error');
     process.exit(1);
