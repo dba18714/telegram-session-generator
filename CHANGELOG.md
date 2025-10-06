@@ -1,3 +1,11 @@
+## [1.7.0](https://github.com/dba18714/telegram-session-generator/compare/v1.6.1...v1.7.0) (2025-10-06)
+
+### Features
+
+* 删除模块类型的定义，并将 eslint.config.js 重命名为 eslint.config.mjs ([04a6df2](https://github.com/dba18714/telegram-session-generator/commit/04a6df2a9797bffc72489be7083b21393420dd85))
+* 将 --verify 参数改成交互式的方式 ([e3e4d9d](https://github.com/dba18714/telegram-session-generator/commit/e3e4d9d53c6661f32b1cea0dc714bf513271b352))
+* 添加模块类型 ([20e2b60](https://github.com/dba18714/telegram-session-generator/commit/20e2b60ff8e0d307b37964ad2fa8d3994363131d))
+
 ## [1.6.1](https://github.com/dba18714/telegram-session-generator/compare/v1.6.0...v1.6.1) (2025-10-03)
 
 ### Bug Fixes
