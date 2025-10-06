@@ -66,6 +66,39 @@ async function promptPassword(): Promise<string> {
 }
 
 /**
+ * Interactive menu prompt
+ */
+async function promptMenuChoice(): Promise<'generate' | 'verify'> {
+  console.log('请选择操作:');
+  console.log('1. 生成新的会话字符串');
+  console.log('2. 验证现有会话字符串');
+  console.log();
+  
+  const choice = await CLIUtils.question('请输入选项 (1 或 2): ');
+  
+  if (choice === '1') {
+    return 'generate';
+  } else if (choice === '2') {
+    return 'verify';
+  } else {
+    CLIUtils.log('❌ 无效的选项，请输入 1 或 2', 'error');
+    return promptMenuChoice();
+  }
+}
+
+/**
+ * Interactive session string prompt
+ */
+async function promptSessionString(): Promise<string> {
+  const sessionString = await CLIUtils.question('📝 请输入要验证的会话字符串: ');
+  if (!sessionString || sessionString.trim() === '') {
+    CLIUtils.log('❌ 无效的会话字符串，请输入有效的值', 'error');
+    return promptSessionString();
+  }
+  return sessionString.trim();
+}
+
+/**
  * Error handler
  */
 function handleError(error: Error): void {
@@ -106,8 +139,85 @@ function displayUsageInstructions(sessionString: string): void {
 }
 
 /**
- * Display help information
+ * Handle session verification
  */
+async function handleSessionVerification(): Promise<void> {
+  CLIUtils.log('验证会话字符串需要 API 凭据', 'info');
+  displayApiInstructions();
+
+  // Get API credentials interactively
+  const apiId = await promptApiId();
+  const apiHash = await promptApiHash();
+  console.log();
+
+  // Get session string to verify
+  const sessionString = await promptSessionString();
+  console.log();
+
+  CLIUtils.log('正在验证会话字符串...', 'info');
+
+  const generator = new TelegramSessionGenerator({ apiId, apiHash });
+  const result = await generator.verifySession(sessionString);
+
+  if (result.success) {
+    CLIUtils.log('会话字符串验证成功！', 'success');
+
+    // Try to get user info
+    const userInfo = await generator.getUserInfo(sessionString);
+    if (userInfo) {
+      console.log(
+        `用户: ${userInfo.firstName}${userInfo.lastName ? ' ' + userInfo.lastName : ''}`
+      );
+      if (userInfo.username) {
+        console.log(`用户名: @${userInfo.username}`);
+      }
+      if (userInfo.phone) {
+        console.log(`手机号: ${userInfo.phone}`);
+      }
+    }
+  } else {
+    CLIUtils.log(`会话字符串验证失败: ${result.error}`, 'error');
+    process.exit(1);
+  }
+
+  await generator.disconnect();
+}
+
+/**
+ * Handle session generation
+ */
+async function handleSessionGeneration(): Promise<void> {
+  CLIUtils.log('请输入你的 Telegram API 凭据', 'info');
+  displayApiInstructions();
+
+  const apiId = await promptApiId();
+  const apiHash = await promptApiHash();
+  console.log();
+
+  CLIUtils.log('正在连接到 Telegram...', 'info');
+  console.log();
+
+  const generator = new TelegramSessionGenerator({ apiId, apiHash });
+
+  const result = await generator.createSession({
+    phoneNumber: promptPhoneNumber,
+    phoneCode: promptVerificationCode,
+    password: promptPassword,
+    onError: handleError,
+  });
+
+  if (result.success) {
+    CLIUtils.log('认证成功!', 'success');
+    console.log();
+    displayUsageInstructions(result.sessionString);
+    CLIUtils.log('已断开连接', 'success');
+  } else {
+    CLIUtils.log(`获取会话失败: ${result.error}`, 'error');
+    process.exit(1);
+  }
+
+  await generator.disconnect();
+}
 function displayHelp(): void {
   console.log(`
 Telegram Session Generator CLI
@@ -118,14 +228,10 @@ Telegram Session Generator CLI
 选项:
   --help, -h        显示帮助信息
   --version, -v     显示版本信息
-  --verify <session>    验证现有会话字符串
 
 示例:
   # 生成新的会话字符串
   telegram-session-generator
-
-  # 验证现有会话字符串
-  telegram-session-generator --verify "your_session_string_here"
 
 获取 API 凭据:
   1. 访问 https://my.telegram.org
@@ -157,78 +263,16 @@ async function main(): Promise<void> {
 
     CLIUtils.header('Telegram 会话获取工具');
 
-    // Check for verify mode
-    const verifyIndex = args.indexOf('--verify');
-    if (verifyIndex !== -1 && args[verifyIndex + 1]) {
-      const sessionString = args[verifyIndex + 1];
-
-      CLIUtils.log('验证会话字符串需要 API 凭据', 'info');
-      displayApiInstructions();
-
-      // Get API credentials interactively
-      const apiId = await promptApiId();
-      const apiHash = await promptApiHash();
-      console.log();
-
-      CLIUtils.log('正在验证会话字符串...', 'info');
-
-      const generator = new TelegramSessionGenerator({ apiId, apiHash });
-      const result = await generator.verifySession(sessionString);
-
-      if (result.success) {
-        CLIUtils.log('会话字符串验证成功！', 'success');
-
-        // Try to get user info
-        const userInfo = await generator.getUserInfo(sessionString);
-        if (userInfo) {
-          console.log(
-            `用户: ${userInfo.firstName}${userInfo.lastName ? ' ' + userInfo.lastName : ''}`
-          );
-          if (userInfo.username) {
-            console.log(`用户名: @${userInfo.username}`);
-          }
-          if (userInfo.phone) {
-            console.log(`手机号: ${userInfo.phone}`);
-          }
-        }
-      } else {
-        CLIUtils.log(`会话字符串验证失败: ${result.error}`, 'error');
-        process.exit(1);
-      }
-      return;
-    }
-
-    // Regular session generation mode
-    CLIUtils.log('请输入你的 Telegram API 凭据', 'info');
-    displayApiInstructions();
-
-    const apiId = await promptApiId();
-    const apiHash = await promptApiHash();
+    // Show interactive menu
+    const choice = await promptMenuChoice();
     console.log();
 
-    CLIUtils.log('正在连接到 Telegram...', 'info');
-    console.log();
-
-    const generator = new TelegramSessionGenerator({ apiId, apiHash });
-
-    const result = await generator.createSession({
-      phoneNumber: promptPhoneNumber,
-      phoneCode: promptVerificationCode,
-      password: promptPassword,
-      onError: handleError,
-    });
-
-    if (result.success) {
-      CLIUtils.log('认证成功!', 'success');
-      console.log();
-      displayUsageInstructions(result.sessionString);
-      CLIUtils.log('已断开连接', 'success');
+    if (choice === 'verify') {
+      await handleSessionVerification();
     } else {
-      CLIUtils.log(`获取会话失败: ${result.error}`, 'error');
-      process.exit(1);
+      await handleSessionGeneration();
     }
 
-    await generator.disconnect();
   } catch (error) {
     CLIUtils.log(`脚本执行失败: ${error instanceof Error ? error.message : error}`, 'error');
     process.exit(1);
